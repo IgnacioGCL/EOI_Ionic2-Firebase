@@ -13,8 +13,11 @@ export class HomePage {
 
   blogs: Blog[];
 
-  constructor(private navCtrl: NavController, http: HttpClient) {
-    http.get('db/blogs.json').subscribe((db: any) => this.blogs = db.blogs);
+  constructor(private navCtrl: NavController, private http: HttpClient) {
+  }
+  
+  ionViewDidLoad(): void {
+    this.http.get('db/blogs.json').subscribe((db: any) => this.blogs = db.blogs);
   }
 
 
