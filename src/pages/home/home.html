@@ -1,14 +1,32 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Mis blogs</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only padding (tap)="createBlog()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-card *ngFor="let blog of blogs">
+    <img [src]="blog.fotoUrl" />
+    <ion-card-content>
+      <ion-card-title>
+        {{blog.titulo}}
+      </ion-card-title>
+      <p class="description">
+        {{blog.descripcion}}
+      </p>
+    </ion-card-content>
+    <ion-buttons end>
+      <button (tap)="goToPost(blog)" ion-button icon-right clear small>
+        <div>Ver más</div>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-card>
 </ion-content>

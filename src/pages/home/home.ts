@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Blog } from '../../types';
+import { BlogPage } from '../blog/blog';
+import { CreateBlogPage } from '../create-blog/create-blog';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +11,19 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  blogs: Blog[];
 
+  constructor(private navCtrl: NavController, http: HttpClient) {
+    http.get('db/blogs.json').subscribe((db: any) => this.blogs = db.blogs);
+  }
+
+
+  goToPost(blog): void {
+    this.navCtrl.push(BlogPage, { blog });
+  }
+
+  createBlog() {
+    this.navCtrl.push(CreateBlogPage);
   }
 
 }
