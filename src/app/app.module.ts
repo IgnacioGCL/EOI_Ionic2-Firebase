@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { env } from '../environments/environment';
 
 import { MyApp } from './app.component';
@@ -27,6 +28,7 @@ import { LoginPage } from '../pages/login/login';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(env.firebase),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     HttpClientModule
   ],
   bootstrap: [IonicApp],
